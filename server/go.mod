@@ -1,0 +1,73 @@
+module github.com/flipped-aurora/gin-vue-admin/server
+
+go 1.16
+
+require (
+	github.com/0xAX/notificator v0.0.0-20220220101646-ee9b8921e557 // indirect
+	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
+	github.com/aliyun/aliyun-oss-go-sdk v2.1.6+incompatible
+	github.com/aws/aws-sdk-go v1.42.27
+	github.com/baiyubin/aliyun-sts-go-sdk v0.0.0-20180326062324-cfa1a18b161f // indirect
+	github.com/casbin/casbin/v2 v2.11.0
+	github.com/casbin/gorm-adapter/v3 v3.0.2
+	github.com/codegangsta/envy v0.0.0-20141216192214-4b78388c8ce4 // indirect
+	github.com/codegangsta/gin v0.0.0-20211113050330-71f90109db02 // indirect
+	github.com/cosmtrek/air v1.40.2 // indirect
+	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
+	github.com/creack/pty v1.1.18 // indirect
+	github.com/fatih/color v1.13.0 // indirect
+	github.com/flipped-aurora/ws v1.0.2
+	github.com/fsnotify/fsnotify v1.5.4
+	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
+	github.com/gin-gonic/gin v1.7.0
+	github.com/go-openapi/spec v0.20.6 // indirect
+	github.com/go-openapi/swag v0.21.1 // indirect
+	github.com/go-redis/redis/v8 v8.11.0
+	github.com/go-sql-driver/mysql v1.5.0
+	github.com/golang-jwt/jwt/v4 v4.3.0
+	github.com/gookit/color v1.3.1
+	github.com/huaweicloud/huaweicloud-sdk-go-obs v3.21.8+incompatible
+	github.com/imdario/mergo v0.3.13 // indirect
+	github.com/jackc/pgx/v4 v4.15.0 // indirect
+	github.com/jordan-wright/email v0.0.0-20200824153738-3f5bafa1cd84
+	github.com/json-iterator/go v1.1.10 // indirect
+	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
+	github.com/lestrrat-go/strftime v1.0.6 // indirect
+	github.com/mailru/easyjson v0.7.7 // indirect
+	github.com/mattn/go-colorable v0.1.12 // indirect
+	github.com/mattn/go-shellwords v1.0.12 // indirect
+	github.com/mitchellh/mapstructure v1.2.2 // indirect
+	github.com/mojocn/base64Captcha v1.3.1
+	github.com/pelletier/go-toml v1.9.5 // indirect
+	github.com/pkg/errors v0.9.1
+	github.com/qiniu/api.v7/v7 v7.4.1
+	github.com/robfig/cron/v3 v3.0.1
+	github.com/satori/go.uuid v1.2.0
+	github.com/shirou/gopsutil v3.21.9+incompatible
+	github.com/songzhibin97/gkit v1.1.1
+	github.com/spf13/afero v1.2.2 // indirect
+	github.com/spf13/cast v1.3.1 // indirect
+	github.com/spf13/jwalterweatherman v1.1.0 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/spf13/viper v1.7.0
+	github.com/stretchr/testify v1.7.1
+	github.com/swaggo/gin-swagger v1.3.0
+	github.com/swaggo/swag v1.8.3
+	github.com/tencentyun/cos-go-sdk-v5 v0.7.19
+	github.com/tklauser/go-sysconf v0.3.9 // indirect
+	github.com/unrolled/secure v1.0.7
+	github.com/urfave/cli/v2 v2.10.0 // indirect
+	github.com/xuri/excelize/v2 v2.4.1
+	go.uber.org/zap v1.16.0
+	golang.org/x/crypto v0.0.0-20220213190939-1e6e3497d506
+	golang.org/x/net v0.0.0-20220617184016-355a448f1bc9 // indirect
+	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
+	golang.org/x/sys v0.0.0-20220615213510-4f61da869c0c // indirect
+	golang.org/x/text v0.3.7
+	golang.org/x/tools v0.1.11 // indirect
+	gopkg.in/ini.v1 v1.55.0 // indirect
+	gorm.io/driver/mysql v1.0.1
+	gorm.io/driver/postgres v1.2.3
+	gorm.io/gorm v1.22.5
+	nhooyr.io/websocket v1.8.6
+)
