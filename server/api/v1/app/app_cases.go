@@ -2,20 +2,20 @@ package app
 
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
-    "github.com/flipped-aurora/gin-vue-admin/server/model/app"
-    "github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-    appReq "github.com/flipped-aurora/gin-vue-admin/server/model/app/request"
-    "github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
-    "github.com/flipped-aurora/gin-vue-admin/server/service"
-    "github.com/gin-gonic/gin"
-    "go.uber.org/zap"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/app"
+	appReq "github.com/flipped-aurora/gin-vue-admin/server/model/app/request"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
+	"github.com/flipped-aurora/gin-vue-admin/server/service"
+	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 type AppCasesApi struct {
 }
 
 var appCasesService = service.ServiceGroupApp.AppServiceGroup.AppCasesService
-
 
 // CreateAppCases 创建AppCases
 // @Tags AppCases
@@ -30,7 +30,7 @@ func (appCasesApi *AppCasesApi) CreateAppCases(c *gin.Context) {
 	var appCases app.AppCases
 	_ = c.ShouldBindJSON(&appCases)
 	if err := appCasesService.CreateAppCases(appCases); err != nil {
-        global.GVA_LOG.Error("创建失败!", zap.Error(err))
+		global.GVA_LOG.Error("创建失败!", zap.Error(err))
 		response.FailWithMessage("创建失败", c)
 	} else {
 		response.OkWithMessage("创建成功", c)
@@ -50,7 +50,7 @@ func (appCasesApi *AppCasesApi) DeleteAppCases(c *gin.Context) {
 	var appCases app.AppCases
 	_ = c.ShouldBindJSON(&appCases)
 	if err := appCasesService.DeleteAppCases(appCases); err != nil {
-        global.GVA_LOG.Error("删除失败!", zap.Error(err))
+		global.GVA_LOG.Error("删除失败!", zap.Error(err))
 		response.FailWithMessage("删除失败", c)
 	} else {
 		response.OkWithMessage("删除成功", c)
@@ -68,9 +68,9 @@ func (appCasesApi *AppCasesApi) DeleteAppCases(c *gin.Context) {
 // @Router /appCases/deleteAppCasesByIds [delete]
 func (appCasesApi *AppCasesApi) DeleteAppCasesByIds(c *gin.Context) {
 	var IDS request.IdsReq
-    _ = c.ShouldBindJSON(&IDS)
+	_ = c.ShouldBindJSON(&IDS)
 	if err := appCasesService.DeleteAppCasesByIds(IDS); err != nil {
-        global.GVA_LOG.Error("批量删除失败!", zap.Error(err))
+		global.GVA_LOG.Error("批量删除失败!", zap.Error(err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
 		response.OkWithMessage("批量删除成功", c)
@@ -90,7 +90,7 @@ func (appCasesApi *AppCasesApi) UpdateAppCases(c *gin.Context) {
 	var appCases app.AppCases
 	_ = c.ShouldBindJSON(&appCases)
 	if err := appCasesService.UpdateAppCases(appCases); err != nil {
-        global.GVA_LOG.Error("更新失败!", zap.Error(err))
+		global.GVA_LOG.Error("更新失败!", zap.Error(err))
 		response.FailWithMessage("更新失败", c)
 	} else {
 		response.OkWithMessage("更新成功", c)
@@ -110,7 +110,7 @@ func (appCasesApi *AppCasesApi) FindAppCases(c *gin.Context) {
 	var appCases app.AppCases
 	_ = c.ShouldBindQuery(&appCases)
 	if reappCases, err := appCasesService.GetAppCases(appCases.ID); err != nil {
-        global.GVA_LOG.Error("查询失败!", zap.Error(err))
+		global.GVA_LOG.Error("查询失败!", zap.Error(err))
 		response.FailWithMessage("查询失败", c)
 	} else {
 		response.OkWithData(gin.H{"reappCases": reappCases}, c)
@@ -130,14 +130,22 @@ func (appCasesApi *AppCasesApi) GetAppCasesList(c *gin.Context) {
 	var pageInfo appReq.AppCasesSearch
 	_ = c.ShouldBindQuery(&pageInfo)
 	if list, total, err := appCasesService.GetAppCasesInfoList(pageInfo); err != nil {
-	    global.GVA_LOG.Error("获取失败!", zap.Error(err))
-        response.FailWithMessage("获取失败", c)
-    } else {
-        response.OkWithDetailed(response.PageResult{
-            List:     list,
-            Total:    total,
-            Page:     pageInfo.Page,
-            PageSize: pageInfo.PageSize,
-        }, "获取成功", c)
-    }
+		global.GVA_LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败", c)
+	} else {
+		response.OkWithDetailed(response.PageResult{
+			List:     list,
+			Total:    total,
+			Page:     pageInfo.Page,
+			PageSize: pageInfo.PageSize,
+		}, "获取成功", c)
+	}
+}
+
+func (appCasesApi *AppCasesApi) GetData(c *gin.Context) {
+	userId := utils.GetUserID(c)
+	var caseData appReq.CaseData
+	_ = c.ShouldBindJSON(&caseData)
+	cases, caseItems, err := appCasesService.GetData(userId, caseData)
+	response.OkWithData(gin.H{"cases": cases, "items": caseItems, "err": err, "userId": userId}, c)
 }

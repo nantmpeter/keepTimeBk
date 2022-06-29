@@ -92,7 +92,7 @@ func (appUserService *AppUsersService) Login(u *app.AppUsers) (userInter *app.Ap
 
 	var user app.AppUsers
 	err = global.GVA_DB.Where("email = ?", u.Email).First(&user).Error
-	//global.GVA_LOG.Info("upwd:" + u.Password + " userpwd" + user.Password)
+	global.GVA_LOG.Info("upwd:" + u.Password + "\n userpwd+ " + user.Password + "\n email: " + u.Email)
 	if err == nil {
 		if ok := utils.BcryptCheck(u.Password, user.Password); !ok {
 			return nil, errors.New("密码错误")

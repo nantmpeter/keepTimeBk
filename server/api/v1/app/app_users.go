@@ -154,7 +154,7 @@ func (appUsersApi *AppUsersApi) Login(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	} else {
-		u := &app.AppUsers{Username: loginReq.Email, Password: loginReq.Password}
+		u := &app.AppUsers{Email: loginReq.Email, Password: loginReq.Password}
 		if user, err := appUsersService.Login(u); err != nil {
 			global.GVA_LOG.Error("登陆失败! 用户名不存在或者密码错误!", zap.Error(err))
 			response.FailWithMessage("用户名不存在或者密码错误", c)
