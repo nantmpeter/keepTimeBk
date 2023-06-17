@@ -27,7 +27,7 @@ export const createAppUsers = (data) => {
 export const deleteAppUsers = (data) => {
   return service({
     url: '/appUsers/deleteAppUsers',
-    method: 'delete',
+    method: 'post',
     data
   })
 }
