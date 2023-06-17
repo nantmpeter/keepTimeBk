@@ -54,7 +54,8 @@ func (appUsersApi *AppUsersApi) CreateAppUsers(c *gin.Context) {
 func (appUsersApi *AppUsersApi) DeleteAppUsers(c *gin.Context) {
 	var appUsers app.AppUsers
 	_ = c.ShouldBindJSON(&appUsers)
-	if err := appUsersService.DeleteAppUsers(appUsers); err != nil {
+	userId := utils.GetUserID(c)
+	if err := appUsersService.DeleteAppUsers(appUsers, userId); err != nil {
 		global.GVA_LOG.Error("删除失败!", zap.Error(err))
 		response.FailWithMessage("删除失败", c)
 	} else {

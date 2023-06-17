@@ -16,7 +16,7 @@ func (s *AppUsersRouter) InitAppUsersRouter(Router *gin.RouterGroup) {
 	var appUsersApi = v1.ApiGroupApp.AppApiGroup.AppUsersApi
 	{
 		appUsersRouter.POST("createAppUsers", appUsersApi.CreateAppUsers)             // 新建AppUsers
-		appUsersRouter.DELETE("deleteAppUsers", appUsersApi.DeleteAppUsers)           // 删除AppUsers
+		appUsersRouter.POST("deleteAppUsers", appUsersApi.DeleteAppUsers)             // 删除AppUsers
 		appUsersRouter.DELETE("deleteAppUsersByIds", appUsersApi.DeleteAppUsersByIds) // 批量删除AppUsers
 		appUsersRouter.PUT("updateAppUsers", appUsersApi.UpdateAppUsers)              // 更新AppUsers
 		appUsersRouter.POST("data", appUsersApi.Data)
@@ -25,7 +25,7 @@ func (s *AppUsersRouter) InitAppUsersRouter(Router *gin.RouterGroup) {
 	}
 	{
 		appUsersRouterWithoutRecord.POST("register", appUsersApi.Register)
-		appUsersRouterWithoutRecord.GET("findAppUsers", appUsersApi.FindAppUsers)       // 根据ID获取AppUsers
-		appUsersRouterWithoutRecord.GET("getAppUsersList", appUsersApi.GetAppUsersList) // 获取AppUsers列表
+		appUsersRouterWithoutRecord.GET("findAppUsers", appUsersApi.FindAppUsers)         // 根据ID获取AppUsers
+		appUsersRouterWithoutRecord.GET("wegetAppUsersList", appUsersApi.GetAppUsersList) // 获取AppUsers列表
 	}
 }

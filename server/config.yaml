@@ -92,8 +92,8 @@ mysql:
   port: "3306"
   config: charset=utf8mb4&parseTime=True&loc=Local
   db-name: keep_time
-  username: mysql
-  password: "654321"
+  username: westilt
+  password: "wangjiayi"
   max-idle-conns: 10
   max-open-conns: 100
   log-mode: error

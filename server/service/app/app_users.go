@@ -24,8 +24,8 @@ func (appUsersService *AppUsersService) CreateAppUsers(appUsers app.AppUsers) (e
 
 // DeleteAppUsers 删除AppUsers记录
 // Author [piexlmax](https://github.com/piexlmax)
-func (appUsersService *AppUsersService) DeleteAppUsers(appUsers app.AppUsers) (err error) {
-	err = global.GVA_DB.Delete(&appUsers).Error
+func (appUsersService *AppUsersService) DeleteAppUsers(appUsers app.AppUsers, userId uint) (err error) {
+	err = global.GVA_DB.Debug().Where("1 = 1").Delete(&appUsers, userId).Error
 	return err
 }
 
